@@ -3,6 +3,7 @@ import Pusher from 'pusher-js'
 
 const EMOJIS = [
   { emoji: '📍', label: 'Uni', id: 'Uni' },
+  { emoji: ' ', label: 'blank', id: 'blank'},
   { emoji: '🥐', label: 'lunch', id: 'lunch' },
 ]
 
