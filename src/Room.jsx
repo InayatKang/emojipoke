@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from 'react'
 import Pusher from 'pusher-js'
 
 const EMOJIS = [
-  { emoji: '🏠', label: 'home', id: 'house' },
-  { emoji: '🚗', label: 'car', id: 'car' },
-  { emoji: '🥐', label: 'croissant', id: 'croissant' },
+  { emoji: '📍', label: 'Uni', id: 'Uni' },
+  //{ emoji: '🚗', label: 'leaving', id: 'leaving' },
+  { emoji: '🥐', label: 'lunch', id: 'lunch' },
 ]
 
 const PUSHER_KEY = import.meta.env.VITE_PUSHER_KEY
