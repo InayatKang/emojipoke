@@ -13,14 +13,20 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const { roomId, emoji, label, id } = req.body
+  const { roomId, emoji, label, id, senderId } = req.body
 
   if (!roomId || !emoji) {
     return res.status(400).json({ error: 'Missing roomId or emoji' })
   }
 
   try {
-    await pusher.trigger(`room-${roomId}`, 'emoji-sent', { emoji, label, id, ts: Date.now() })
+    await pusher.trigger(`room-${roomId}`, 'emoji-sent', {
+      emoji,
+      label,
+      id,
+      senderId,
+      ts: Date.now(),
+    })
     res.status(200).json({ ok: true })
   } catch (err) {
     console.error(err)
