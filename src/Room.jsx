@@ -3,7 +3,6 @@ import Pusher from 'pusher-js'
 
 const EMOJIS = [
   { emoji: '📍', label: 'Uni', id: 'Uni' },
-  { emoji: ' ', label: 'blank', id: 'blank'},
   { emoji: '🥐', label: 'lunch', id: 'lunch' },
 ]
 
@@ -22,6 +21,11 @@ export default function Room({ roomId }) {
   const [receivedKey, setReceivedKey] = useState(0)
   const sendingTimer = useRef(null)
   const isSending = useRef(false)
+  const notifPermRef = useRef(notifPerm)
+
+  useEffect(() => {
+    notifPermRef.current = notifPerm
+  }, [notifPerm])
 
   useEffect(() => {
     if (!PUSHER_KEY) return
@@ -34,11 +38,16 @@ export default function Room({ roomId }) {
       if (isSending.current) return
       setReceived(data)
       setReceivedKey(k => k + 1)
-      if (document.visibilityState !== 'visible' && notifPerm === 'granted') {
+
+      // Show notification whether app is in foreground or background
+      if (notifPermRef.current === 'granted') {
         navigator.serviceWorker?.ready.then(reg => {
-          reg.showNotification('Poke!', {
+          reg.showNotification('Poke! 👋', {
             body: `${data.emoji} — ${data.label}`,
-            vibrate: [80, 40, 80],
+            icon: '/manifest.json',
+            vibrate: [100, 50, 100],
+            tag: 'poke',
+            renotify: true,
           })
         })
       }
@@ -66,7 +75,6 @@ export default function Room({ roomId }) {
         body: JSON.stringify({ roomId, ...item }),
       })
     } catch (e) {}
-    // Keep the flag true long enough for the echo to arrive and be ignored
     setTimeout(() => { isSending.current = false }, 2000)
     if (sendingTimer.current) clearTimeout(sendingTimer.current)
     sendingTimer.current = setTimeout(() => setSending(null), 600)
@@ -85,8 +93,18 @@ export default function Room({ roomId }) {
   }
 
   async function requestNotifs() {
+    if (typeof Notification === 'undefined') return
     const perm = await Notification.requestPermission()
     setNotifPerm(perm)
+    if (perm === 'granted') {
+      navigator.serviceWorker?.ready.then(reg => {
+        reg.showNotification('Notifications on! 🔔', {
+          body: "You'll be notified when they send a poke.",
+          vibrate: [80],
+          tag: 'poke-setup',
+        })
+      })
+    }
   }
 
   return (
@@ -94,7 +112,7 @@ export default function Room({ roomId }) {
 
       <div style={styles.receivedArea}>
         <div style={styles.displayBox}>
-          <span style={styles.boxLabel}>person 2</span>
+          <span style={styles.boxLabel}>them</span>
           {received
             ? <div key={receivedKey} style={styles.bigEmoji}>{received.emoji}</div>
             : <div style={styles.placeholderBox} />}
@@ -120,8 +138,10 @@ export default function Room({ roomId }) {
         <button style={styles.shareBtn} onClick={shareRoom}>
           {copied ? '✓ Copied' : 'Invite'}
         </button>
-        {notifPerm === 'default' && (
-          <button style={styles.notifBtn} onClick={requestNotifs}>🔔</button>
+        {notifPerm !== 'granted' && (
+          <button style={styles.notifBtn} onClick={requestNotifs}>
+            {notifPerm === 'denied' ? '🔕' : '🔔'}
+          </button>
         )}
       </div>
 
