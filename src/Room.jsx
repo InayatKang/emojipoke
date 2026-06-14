@@ -4,7 +4,7 @@ import Pusher from 'pusher-js'
 const EMOJIS = [
   { emoji: '🏠', label: 'home', id: 'house' },
   { emoji: '🚗', label: 'car', id: 'car' },
-  { emoji: '🥡', label: 'lunch', id: 'lunch' },
+  { emoji: '🥐', label: 'croissant', id: 'croissant' },
 ]
 
 const PUSHER_KEY = import.meta.env.VITE_PUSHER_KEY
@@ -12,6 +12,7 @@ const PUSHER_CLUSTER = import.meta.env.VITE_PUSHER_CLUSTER || 'us3'
 
 export default function Room({ roomId }) {
   const [received, setReceived] = useState(null)
+  const [sent, setSent] = useState(null)
   const [sending, setSending] = useState(null)
   const [connected, setConnected] = useState(false)
   const [copied, setCopied] = useState(false)
@@ -54,6 +55,7 @@ export default function Room({ roomId }) {
   async function sendEmoji(item) {
     if (sending) return
     setSending(item.id)
+    setSent(item)
     try {
       await fetch('/api/send', {
         method: 'POST',
@@ -84,26 +86,30 @@ export default function Room({ roomId }) {
 
   return (
     <div style={styles.container}>
-      {/* Received emoji display */}
+
       <div style={styles.receivedArea}>
-        {received ? (
-          <div key={receivedKey} style={styles.receivedEmoji}>
-            {received.emoji}
-          </div>
-        ) : (
-          <div style={styles.placeholder}>
-            <div style={styles.placeholderBox} />
-            <span style={styles.placeholderText}>
-              {connected ? 'Waiting for a poke…' : 'Connecting…'}
-            </span>
-          </div>
-        )}
+        <div style={styles.displayBox}>
+          <span style={styles.boxLabel}>them</span>
+          {received
+            ? <div key={receivedKey} style={styles.bigEmoji}>{received.emoji}</div>
+            : <div style={styles.placeholderBox} />}
+        </div>
+        <div style={styles.divider} />
+        <div style={styles.displayBox}>
+          <span style={styles.boxLabel}>you</span>
+          {sent
+            ? <div style={styles.bigEmoji}>{sent.emoji}</div>
+            : <div style={styles.placeholderBox} />}
+        </div>
       </div>
 
-      {/* Room strip */}
       <div style={styles.strip}>
         <div style={styles.roomInfo}>
-          <div style={{ ...styles.dot, background: connected ? 'var(--accent)' : 'var(--text-dim)', boxShadow: connected ? '0 0 6px var(--accent)' : 'none' }} />
+          <div style={{
+            ...styles.dot,
+            background: connected ? 'var(--accent)' : 'var(--text-dim)',
+            boxShadow: connected ? '0 0 6px var(--accent)' : 'none'
+          }} />
           <span style={styles.roomCode}>{roomId}</span>
         </div>
         <button style={styles.shareBtn} onClick={shareRoom}>
@@ -114,7 +120,6 @@ export default function Room({ roomId }) {
         )}
       </div>
 
-      {/* Emoji buttons */}
       <div style={styles.emojiBar}>
         {EMOJIS.map(item => (
           <button
@@ -146,30 +151,42 @@ const styles = {
   receivedArea: {
     flex: 1,
     display: 'flex',
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
+    padding: '0 24px',
+    gap: '16px',
   },
-  receivedEmoji: {
-    fontSize: '120px',
-    lineHeight: 1,
-    animation: 'none',
-    filter: 'drop-shadow(0 0 40px rgba(200,240,122,0.3))',
-  },
-  placeholder: {
+  displayBox: {
+    flex: 1,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '16px',
+    gap: '12px',
+  },
+  boxLabel: {
+    fontSize: '12px',
+    color: 'var(--text-dim)',
+    letterSpacing: '0.1em',
+    textTransform: 'uppercase',
+    fontWeight: '600',
+  },
+  bigEmoji: {
+    fontSize: '80px',
+    lineHeight: 1,
+    filter: 'drop-shadow(0 0 30px rgba(200,240,122,0.25))',
   },
   placeholderBox: {
-    width: '120px',
-    height: '120px',
-    borderRadius: '28px',
+    width: '90px',
+    height: '90px',
+    borderRadius: '24px',
     border: '2px dashed var(--border)',
   },
-  placeholderText: {
-    fontSize: '14px',
-    color: 'var(--text-dim)',
+  divider: {
+    width: '1px',
+    height: '80px',
+    background: 'var(--border)',
+    flexShrink: 0,
   },
   strip: {
     display: 'flex',
