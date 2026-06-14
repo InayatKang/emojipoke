@@ -94,7 +94,7 @@ export default function Room({ roomId }) {
 
       <div style={styles.receivedArea}>
         <div style={styles.displayBox}>
-          <span style={styles.boxLabel}>them</span>
+          <span style={styles.boxLabel}>person 2</span>
           {received
             ? <div key={receivedKey} style={styles.bigEmoji}>{received.emoji}</div>
             : <div style={styles.placeholderBox} />}
