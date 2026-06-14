@@ -3,6 +3,7 @@ import Pusher from 'pusher-js'
 
 const EMOJIS = [
   { emoji: '📍', label: 'Uni', id: 'Uni' },
+  { emoji: 'x', label: 'blank', id: 'blank' },
   { emoji: '🥐', label: 'lunch', id: 'lunch' },
 ]
 
@@ -42,7 +43,7 @@ export default function Room({ roomId }) {
       // Show notification whether app is in foreground or background
       if (notifPermRef.current === 'granted') {
         navigator.serviceWorker?.ready.then(reg => {
-          reg.showNotification('Poke! 👋', {
+          reg.showNotification('You got poked! 👋', {
             body: `${data.emoji} — ${data.label}`,
             icon: '/manifest.json',
             vibrate: [100, 50, 100],
@@ -112,7 +113,7 @@ export default function Room({ roomId }) {
 
       <div style={styles.receivedArea}>
         <div style={styles.displayBox}>
-          <span style={styles.boxLabel}>them</span>
+          <span style={styles.boxLabel}>person 2</span>
           {received
             ? <div key={receivedKey} style={styles.bigEmoji}>{received.emoji}</div>
             : <div style={styles.placeholderBox} />}
