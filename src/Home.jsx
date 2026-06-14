@@ -106,10 +106,10 @@ export default function Home({ onCreate, onJoin }) {
     <div style={s.container}>
       <div style={s.hero}>
         <div style={s.heroEmojis}>
-          <span>🏠</span><span>🚗</span><span>🥡</span>
+          <span>📍</span><span>🚗</span><span>🥐</span>
         </div>
         <h1 style={s.title}>Poke</h1>
-        <p style={s.subtitle}>Three emojis. One person. No words needed.</p>
+        <p style={s.subtitle}>poking emojis bc why not</p>
       </div>
 
       <div style={s.actions}>
