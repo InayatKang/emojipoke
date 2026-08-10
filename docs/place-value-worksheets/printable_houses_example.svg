@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="310" viewBox="0 0 1100 310">
+<rect width="1100" height="310" fill="#ffffff"/>
+<defs><pattern id="bricks" patternUnits="userSpaceOnUse" width="6" height="5"><rect width="6" height="5" fill="#fff"/><path d="M0 0H6M0 2.5H6M0 5H6M3 0V2.5M0 2.5V5M6 2.5V5" stroke="#333" stroke-width="0.65" fill="none"/></pattern></defs>
+<rect x="18.0" y="68" width="145.7" height="150" fill="#fff" stroke="#111" stroke-width="2.2"/>
+<rect x="27.0" y="82" width="127.7" height="68" fill="#fff" stroke="#444" stroke-width="1.4" rx="4"/>
+<text x="90.9" y="128.0" text-anchor="middle" font-family="Arial" font-size="34" font-weight="700" fill="#1B3A4B">3</text>
+<text x="90.9" y="198.0" text-anchor="middle" font-family="Arial" font-size="10.5" font-weight="600" fill="#222">Millions</text>
+<polygon points="13.0,69.0 90.9,8.0 168.7,69.0" fill="#A074B5" stroke="#111" stroke-width="2.2"/>
+<rect x="122.9" y="12.7" width="15" height="20" fill="url(#bricks)" stroke="#111" stroke-width="1.2"/>
+<text x="90.9" y="42.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#111">MILLIONS</text>
+<text x="174.7" y="141.0" text-anchor="middle" font-family="Arial" font-size="10" font-weight="700" fill="#2F6F6A">← ×10</text>
+<text x="174.7" y="155.0" text-anchor="middle" font-family="Arial" font-size="10" font-weight="700" fill="#2F6F6A">→ ÷10</text>
+<rect x="185.7" y="68" width="437.1" height="150" fill="#fff" stroke="#111" stroke-width="2.2"/>
+<rect x="194.7" y="82" width="127.7" height="68" fill="#fff" stroke="#444" stroke-width="1.4" rx="4"/>
+<text x="258.6" y="128.0" text-anchor="middle" font-family="Arial" font-size="34" font-weight="700" fill="#1B3A4B">1</text>
+<text x="258.6" y="190.0" text-anchor="middle" font-family="Arial" font-size="10.5" font-weight="600" fill="#222">Hundred</text>
+<text x="258.6" y="202.0" text-anchor="middle" font-family="Arial" font-size="10.5" font-weight="600" fill="#222">Thousands</text>
+<line x1="331.4" y1="68" x2="331.4" y2="218" stroke="#111" stroke-width="1.6"/>
+<rect x="340.4" y="82" width="127.7" height="68" fill="#fff" stroke="#444" stroke-width="1.4" rx="4"/>
+<text x="404.3" y="128.0" text-anchor="middle" font-family="Arial" font-size="34" font-weight="700" fill="#1B3A4B">5</text>
+<text x="404.3" y="190.0" text-anchor="middle" font-family="Arial" font-size="10.5" font-weight="600" fill="#222">Ten</text>
+<text x="404.3" y="202.0" text-anchor="middle" font-family="Arial" font-size="10.5" font-weight="600" fill="#222">Thousands</text>
+<line x1="477.1" y1="68" x2="477.1" y2="218" stroke="#111" stroke-width="1.6"/>
+<rect x="486.1" y="82" width="127.7" height="68" fill="#fff" stroke="#444" stroke-width="1.4" rx="4"/>
+<text x="550.0" y="128.0" text-anchor="middle" font-family="Arial" font-size="34" font-weight="700" fill="#1B3A4B">2</text>
+<text x="550.0" y="198.0" text-anchor="middle" font-family="Arial" font-size="10.5" font-weight="600" fill="#222">Thousands</text>
+<polygon points="180.7,69.0 404.3,8.0 627.9,69.0" fill="#F29B3A" stroke="#111" stroke-width="2.2"/>
+<rect x="500.5" y="13.8" width="15" height="20" fill="url(#bricks)" stroke="#111" stroke-width="1.2"/>
+<text x="404.3" y="42.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#111">THOUSANDS</text>
+<text x="633.9" y="141.0" text-anchor="middle" font-family="Arial" font-size="10" font-weight="700" fill="#2F6F6A">← ×10</text>
+<text x="633.9" y="155.0" text-anchor="middle" font-family="Arial" font-size="10" font-weight="700" fill="#2F6F6A">→ ÷10</text>
+<rect x="644.9" y="68" width="437.1" height="150" fill="#fff" stroke="#111" stroke-width="2.2"/>
+<rect x="653.9" y="82" width="127.7" height="68" fill="#fff" stroke="#444" stroke-width="1.4" rx="4"/>
+<text x="717.7" y="128.0" text-anchor="middle" font-family="Arial" font-size="34" font-weight="700" fill="#1B3A4B">4</text>
+<text x="717.7" y="198.0" text-anchor="middle" font-family="Arial" font-size="10.5" font-weight="600" fill="#222">Hundreds</text>
+<line x1="790.6" y1="68" x2="790.6" y2="218" stroke="#111" stroke-width="1.6"/>
+<rect x="799.6" y="82" width="127.7" height="68" fill="#fff" stroke="#444" stroke-width="1.4" rx="4"/>
+<text x="863.4" y="128.0" text-anchor="middle" font-family="Arial" font-size="34" font-weight="700" fill="#1B3A4B">1</text>
+<text x="863.4" y="198.0" text-anchor="middle" font-family="Arial" font-size="10.5" font-weight="600" fill="#222">Tens</text>
+<line x1="936.3" y1="68" x2="936.3" y2="218" stroke="#111" stroke-width="1.6"/>
+<rect x="945.3" y="82" width="127.7" height="68" fill="#fff" stroke="#444" stroke-width="1.4" rx="4"/>
+<text x="1009.1" y="128.0" text-anchor="middle" font-family="Arial" font-size="34" font-weight="700" fill="#1B3A4B">8</text>
+<text x="1009.1" y="198.0" text-anchor="middle" font-family="Arial" font-size="10.5" font-weight="600" fill="#222">Ones</text>
+<polygon points="639.9,69.0 863.4,8.0 1087.0,69.0" fill="#EF6B73" stroke="#111" stroke-width="2.2"/>
+<rect x="959.6" y="13.8" width="15" height="20" fill="url(#bricks)" stroke="#111" stroke-width="1.2"/>
+<text x="863.4" y="42.0" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#111">ONES</text>
+<line x1="18" y1="228" x2="1082" y2="228" stroke="#999" stroke-width="2"/>
+<text x="550.0" y="292" text-anchor="middle" font-family="Arial" font-size="12" fill="#333">Millions  ·  Hundred Thousands  ·  Ten Thousands  ·  Thousands  ·  Hundreds  ·  Tens  ·  Ones</text>
+<text x="550" y="275" text-anchor="middle" font-family="Arial" font-size="14" font-weight="700" fill="#1B3A4B">Example: 3,152,418</text>
+</svg>
